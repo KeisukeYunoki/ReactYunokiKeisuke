@@ -10,6 +10,8 @@ import { useState } from 'react';
 import RadioButton from './components/RadioButton';
 import ToggleButton from './components/ToggleButton';
 import ProgressBar from './components/ProgressBar';
+import TransParency from './components/TransParency';
+import FormateDetermination from './components/FormatDetermination'
 
 function App() {
   const [user] = useAuthState(auth);
@@ -31,6 +33,8 @@ function App() {
               <li onClick={() => setActiveTab("radiobutton")}>ラジオボタン</li>
               <li onClick={() => setActiveTab("togglebutton")}>トグルボタン</li>
               <li onClick={() => setActiveTab("progressbar")}>プログレスバー</li>
+              <li onClick={() => setActiveTab("transparency")}>透明度調整</li>
+              <li onClick={() => setActiveTab("formatdetermination")}>メール形式、電話番号形式判定</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -44,6 +48,8 @@ function App() {
               {activeTab === "radiobutton" && <RadioButton />}
               {activeTab === "togglebutton" && <ToggleButton />}
               {activeTab === "progressbar" && <ProgressBar />}
+              {activeTab === "transparency" && <TransParency />}
+              {activeTab === "formatdetermination" && <FormateDetermination />}
 
               {/* 他のコンポーネントもここに追加 */}
             </>
