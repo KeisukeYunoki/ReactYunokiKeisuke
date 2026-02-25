@@ -1,23 +1,50 @@
 import logo from './logo.svg';
 import './App.css';
+import SignIn from './components/SignIn';
+import SignOut from './components/SignOut';
+import CounterApp from './components/CounterApp';
+import CheckBox from './components/CheckBox'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
+import { useState } from 'react';
+import RadioButton from './components/RadioButton';
 
 function App() {
+  const [user] = useAuthState(auth);
+  // 表示中のコンテンツを管理するState
+  const [activeTab, setActiveTab] = useState("menu");
+  const BMICalculator = () => <div>BMI計算機作成中</div>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {user ? (
+        <>
+          <SignOut />
+          
+          {/* activeTabが"menu"の時だけリストを表示 */}
+          {activeTab === "menu" ? (
+            <ul>
+              <li onClick={() => setActiveTab("counter")}>カウンターアプリ</li>
+              <li onClick={() => setActiveTab("checkbox")}>チェックボックス</li>
+              <li onClick={() => setActiveTab("radiobutton")}>ラジオボタン</li>
+              {/* 他の項目も同様に... */}
+            </ul>
+          ) : (
+            <>
+              {/* メニューに戻るボタン */}
+              <button onClick={() => setActiveTab("menu")}>戻る</button>
+
+              {/* Stateに合わせてコンポーネントを切り替え */}
+              {activeTab === "counter" && <CounterApp />}
+              {activeTab === "checkbox" && <CheckBox />}
+              {activeTab === "radiobutton" && <RadioButton />}
+              {/* 他のコンポーネントもここに追加 */}
+            </>
+          )}
+        </>
+      ) : (
+        <SignIn />
+      )}
     </div>
   );
 }
