@@ -17,7 +17,7 @@ const RadioButton = () => {
                     checked={selectedSex === item.sex}
                     onChange={() => setSelectedSex(item.sex)}
                     />
-                    
+                {item.sex}
                 </label>)
             }
         <br />
