@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import { useState } from 'react';
 import RadioButton from './components/RadioButton';
+import ToggleButton from './components/ToggleButton';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -27,6 +28,7 @@ function App() {
               <li onClick={() => setActiveTab("counter")}>カウンターアプリ</li>
               <li onClick={() => setActiveTab("checkbox")}>チェックボックス</li>
               <li onClick={() => setActiveTab("radiobutton")}>ラジオボタン</li>
+              <li onClick={() => setActiveTab("togglebutton")}>トグルボタン</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -38,6 +40,8 @@ function App() {
               {activeTab === "counter" && <CounterApp />}
               {activeTab === "checkbox" && <CheckBox />}
               {activeTab === "radiobutton" && <RadioButton />}
+              {activeTab === "togglebutton" && <ToggleButton />}
+
               {/* 他のコンポーネントもここに追加 */}
             </>
           )}
