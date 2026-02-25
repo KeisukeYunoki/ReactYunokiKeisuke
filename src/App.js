@@ -9,6 +9,7 @@ import { auth } from "./firebase";
 import { useState } from 'react';
 import RadioButton from './components/RadioButton';
 import ToggleButton from './components/ToggleButton';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -29,6 +30,7 @@ function App() {
               <li onClick={() => setActiveTab("checkbox")}>チェックボックス</li>
               <li onClick={() => setActiveTab("radiobutton")}>ラジオボタン</li>
               <li onClick={() => setActiveTab("togglebutton")}>トグルボタン</li>
+              <li onClick={() => setActiveTab("progressbar")}>プログレスバー</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -41,6 +43,7 @@ function App() {
               {activeTab === "checkbox" && <CheckBox />}
               {activeTab === "radiobutton" && <RadioButton />}
               {activeTab === "togglebutton" && <ToggleButton />}
+              {activeTab === "progressbar" && <ProgressBar />}
 
               {/* 他のコンポーネントもここに追加 */}
             </>
