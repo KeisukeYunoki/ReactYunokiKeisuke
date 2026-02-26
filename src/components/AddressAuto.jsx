@@ -5,7 +5,6 @@ function AddressAuto() {
     const [address1, setAddress1] = useState("");
     const [address2, setAddress2] = useState("");
     const [address3, setAddress3] = useState("");
-    const [fulladdress, setFullAddress] = useState("")
     const handleSearch = () => {
         fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${postNum}`)
             .then(response => response.json())
@@ -19,6 +18,13 @@ function AddressAuto() {
             })
         };
 
+    const handleCrear = () => {
+        setPostNum("");
+        setAddress1("");
+        setAddress2("");
+        setAddress3("");
+    }
+ 
     return (
         <div>
             <div>AddressAuto</div>
@@ -26,6 +32,7 @@ function AddressAuto() {
                 郵便番号
                 <input type="text" value={postNum} onChange={(e) => setPostNum(e.target.value)}/>
                 <button onClick={() => handleSearch()}>自動入力</button>
+                <button onClick={() => handleCrear()}>クリア</button>
             </div>
             <>都道府県：{address1}</>
             <br />
