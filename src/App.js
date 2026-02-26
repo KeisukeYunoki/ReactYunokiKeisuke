@@ -13,6 +13,7 @@ import ProgressBar from './components/ProgressBar';
 import TransParency from './components/TransParency';
 import FormateDetermination from './components/FormatDetermination';
 import BMICalculator from './components/BMICalculator';
+import AddressAuto from './components/AddressAuto';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -37,6 +38,7 @@ function App() {
               <li onClick={() => setActiveTab("transparency")}>透明度調整</li>
               <li onClick={() => setActiveTab("formatdetermination")}>メール形式、電話番号形式判定</li>
               <li onClick={() => setActiveTab("bmicalc")}>BMI計算機</li>
+              <li onClick={() => setActiveTab("addressauto")}>住所自動入力API</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -53,7 +55,7 @@ function App() {
               {activeTab === "transparency" && <TransParency />}
               {activeTab === "formatdetermination" && <FormateDetermination />}
               {activeTab === "bmicalc" && <BMICalculator />}
-
+              {activeTab === "addressauto" && <AddressAuto />}
               {/* 他のコンポーネントもここに追加 */}
             </>
           )}
