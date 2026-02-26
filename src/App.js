@@ -11,13 +11,14 @@ import RadioButton from './components/RadioButton';
 import ToggleButton from './components/ToggleButton';
 import ProgressBar from './components/ProgressBar';
 import TransParency from './components/TransParency';
-import FormateDetermination from './components/FormatDetermination'
+import FormateDetermination from './components/FormatDetermination';
+import BMICalculator from './components/BMICalculator';
 
 function App() {
   const [user] = useAuthState(auth);
   // 表示中のコンテンツを管理するState
   const [activeTab, setActiveTab] = useState("menu");
-  const BMICalculator = () => <div>BMI計算機作成中</div>
+
 
   return (
     <div>
@@ -35,6 +36,7 @@ function App() {
               <li onClick={() => setActiveTab("progressbar")}>プログレスバー</li>
               <li onClick={() => setActiveTab("transparency")}>透明度調整</li>
               <li onClick={() => setActiveTab("formatdetermination")}>メール形式、電話番号形式判定</li>
+              <li onClick={() => setActiveTab("bmicalc")}>BMI計算機</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -50,6 +52,7 @@ function App() {
               {activeTab === "progressbar" && <ProgressBar />}
               {activeTab === "transparency" && <TransParency />}
               {activeTab === "formatdetermination" && <FormateDetermination />}
+              {activeTab === "bmicalc" && <BMICalculator />}
 
               {/* 他のコンポーネントもここに追加 */}
             </>
