@@ -14,6 +14,7 @@ import TransParency from './components/TransParency';
 import FormateDetermination from './components/FormatDetermination';
 import BMICalculator from './components/BMICalculator';
 import AddressAuto from './components/AddressAuto';
+import LoginScreen from './components/LoginScreen';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -23,9 +24,8 @@ function App() {
 
   return (
     <div>
-      {user ? (
         <>
-          <SignOut />
+          
           
           {/* activeTabが"menu"の時だけリストを表示 */}
           {activeTab === "menu" ? (
@@ -39,6 +39,7 @@ function App() {
               <li onClick={() => setActiveTab("formatdetermination")}>メール形式、電話番号形式判定</li>
               <li onClick={() => setActiveTab("bmicalc")}>BMI計算機</li>
               <li onClick={() => setActiveTab("addressauto")}>住所自動入力API</li>
+              <li onClick={() => setActiveTab("loginscreen")}>ログイン画面</li>
               {/* 他の項目も同様に... */}
             </ul>
           ) : (
@@ -56,13 +57,11 @@ function App() {
               {activeTab === "formatdetermination" && <FormateDetermination />}
               {activeTab === "bmicalc" && <BMICalculator />}
               {activeTab === "addressauto" && <AddressAuto />}
+              {activeTab === "loginscreen" && <LoginScreen />}
               {/* 他のコンポーネントもここに追加 */}
             </>
           )}
         </>
-      ) : (
-        <SignIn />
-      )}
     </div>
   );
 }
