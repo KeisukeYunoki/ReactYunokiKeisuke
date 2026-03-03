@@ -9,11 +9,7 @@ function CheckBox() {
     ];
     const [selectedItems, setSelectedItems] = useState([]);
     const handleToggle = (name) => {
-        selectedItems.includes(name) 
-        ?
-        setSelectedItems(selectedItems.filter((item) => item !== name))
-        :
-        setSelectedItems([...selectedItems, name])
+        selectedItems.includes(name) ? setSelectedItems(selectedItems.filter((item) => item !== name)) : setSelectedItems([...selectedItems, name])
     };
   return (
     <div>CheckBox

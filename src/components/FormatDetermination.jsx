@@ -3,27 +3,35 @@ import React, { useState } from 'react'
 function FormatDetermination() {
     const [email, setEmail] = useState("");
     const [telephonenumber, setTelephoneNumber] = useState("");
-    const [emailError, setEmailError] = useState(false);
-    const [teleError, setTeleError] = useState(false);
+    const [hasemailError, setHasEmailError] = useState(false);
+    const [hasteleError, setHasTeleError] = useState(false);
     
     const handleEmail = () => {
+        if (email === "") {
+            setHasEmailError(false);
+            return;
+        }
         // メール判断条件：^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
         const conditionEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             conditionEmail.test(email)
             ?
-            setEmailError(false)
+            setHasEmailError(false)
             :
-            setEmailError(true);
+            setHasEmailError(true);
     }
 
     const handleTele = () => {
+        if (telephonenumber === "") {
+            setHasTeleError(false);
+            return;
+        }
         // 携帯電話判断条件：/\A0[5789]0[-(]?\d{4}[-)]?\d{4}\z/
         const conditionTele = /^0[5789]0[-(]?\d{4}[-)]?\d{4}$/;
             conditionTele.test(telephonenumber)
             ?
-            setTeleError(false)
+            setHasTeleError(false)
             :
-            setTeleError(true);
+            setHasTeleError(true);
     }
 
 
@@ -33,7 +41,7 @@ function FormatDetermination() {
         メールアドレス　
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={handleEmail}/>
         {
-            emailError
+            hasemailError
             &&
             <div style={{
                 color: 'red',
@@ -44,7 +52,7 @@ function FormatDetermination() {
         電話番号　　　　
         <input type="tel"  value={telephonenumber} onChange={(e) => setTelephoneNumber(e.target.value)} onBlur={handleTele}/>
         {
-            teleError
+            hasteleError
             &&
             <div style={{
                 color: 'red',
